@@ -14,7 +14,7 @@ TASK_LIST = [
     "Humanoid-v2",
     "Reacher-v2",
     "Walker2d-v2",
-    "HumanoidStandup-v2"import tf_util
+    "HumanoidStandup-v2"
 ]
 
 def data_gather(learningpara):
@@ -51,17 +51,17 @@ def data_gather(learningpara):
             returns.append(totalr)
         expert_data = {
         'actions':np.array(actions),
-        'observation':np.array(observations)
+        'observation':np.array(observations),
         'rewards':np.array(totalr)
         }
-        with open(learningpara,rb) as f
+        with open(learningpara,rb) as f:
             pickle.dump(expert_data,f)
         return expert_data
 
 def configuration_load(env_name):
     config = {
     "env": env_name,
-    "max": 1000000
+    "max": 1000000,
     "rollouts":20,
     "epochs":30,
     "render": True,
