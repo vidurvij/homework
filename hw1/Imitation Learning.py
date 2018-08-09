@@ -20,6 +20,7 @@ TASK_LIST = [
 def data_gather(learningpara):
 
     print("Gathering Data")
+    policy_fn = load_policy.load_policy("{}.pkl")
     with tf.Session():
         tf_util.initialize()
 
@@ -65,7 +66,7 @@ def configuration_load(env_name):
     "rollouts":20,
     "epochs":30,
     "render": True,
-    "path": 'data/{}/{}.pkl'.format(env_name)
+    "path": 'data/{}/{}.pkl'.format(env_name,env_name)
     }
     return config
 
@@ -77,3 +78,5 @@ def data_run():
         expert = data_gather(config)
         data['name'] = expert
     pickle.dump('data/expert_big.pkl',data)
+if __name__ == '__main__':
+    data_run()
