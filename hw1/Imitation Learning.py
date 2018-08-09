@@ -4,6 +4,7 @@ import numpy as np
 import gym
 import pickle
 import os
+import tf_util
 
 
 TASK_LIST = [
@@ -13,7 +14,7 @@ TASK_LIST = [
     "Humanoid-v2",
     "Reacher-v2",
     "Walker2d-v2",
-    "HumanoidStandup-v2"
+    "HumanoidStandup-v2"import tf_util
 ]
 
 def data_gather(learningpara):
@@ -76,4 +77,3 @@ def data_run():
         expert = data_gather(config)
         data['name'] = expert
     pickle.dump('data/expert_big.pkl',data)
-    
